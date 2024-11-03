@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'primeicons/primeicons.css';
+
+@import "./global-styles/components/button";
+@import "@fontsource/jetbrains-mono"; // Jetbrains mono 400
+
+html, body {
+  @apply m-0 p-0 font-[Inter];
+}
+
+body {
+  @apply font-[Inter] min-h-full;
+}
+
