@@ -1,4 +1,5 @@
 import { InputText } from 'primereact/inputtext';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
@@ -20,7 +21,9 @@ export const Header = () => {
       </span>
 
       <section className='flex gap-10'>
-        <button className='btn outlined w-[93px]'>Увійти</button>
+        <Link to={'/auth/login'}>
+          <button className='btn outlined w-[93px] h-full'>Увійти</button>
+        </Link>
         <button className='btn filled w-[93px]'>Створити</button>
       </section>
     </header>

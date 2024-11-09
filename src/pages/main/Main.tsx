@@ -2,6 +2,7 @@ import { Header } from '../../core/components/header/Header.tsx';
 import gallery1 from './../../assets/img/main-gallery-1.png'
 import gallery2 from './../../assets/img/main-gallery-2.png'
 import gallery3 from './../../assets/img/main-gallery-3.png'
+import { Link } from 'react-router-dom';
 
 export const Main = () => {
   return <>
@@ -14,7 +15,9 @@ export const Main = () => {
           перевірте свої знання та готуйтеся досягти успіху в ІТ
         </p>
 
-        <button className='btn filled py-4 px-16'>Зареєструватись</button>
+        <Link to={'/auth/signup'}>
+          <button className='btn filled py-4 px-16'>Зареєструватись</button>
+        </Link>
       </div>
 
       <div className='flex gap-16'>

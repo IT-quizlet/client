@@ -1,4 +1,4 @@
-import { Main } from './pages/main/Main.tsx';
+import {Outlet} from "react-router-dom";
 
 const App = () => {
 
@@ -6,7 +6,7 @@ const App = () => {
   // configure paths
   // fix styles errors
   return (
-    <Main/>
+    <Outlet/>
   )
 }
 
