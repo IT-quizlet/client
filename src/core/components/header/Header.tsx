@@ -8,14 +8,18 @@ export const Header = () => {
     >
       <section className='flex gap-10 content-center leading-8'>
         <h1 className='font-bold text-[20px]'>IT Quizlet</h1>
-        <h2 className='text-[17px]'>Інструменти</h2>
-        <h2 className='text-[17px]'>Категорії</h2>
+        <Link to={''}>
+          <h2 className='text-[17px]'>Home</h2>
+        </Link>
+        <Link to={'/quiz/list'}>
+          <h2 className='text-[17px]'>My library</h2>
+        </Link>
       </section>
 
       <span className='p-input-icon-left'>
         <i className='pi pi-search pl-[12px]'/>
         <InputText
-          className='pl-[32px] py-[2px] pr-[12px] border border-black rounded-xl'
+          className='input'
           placeholder='Пошук'
         />
       </span>
@@ -24,7 +28,9 @@ export const Header = () => {
         <Link to={'/auth/login'}>
           <button className='btn outlined w-[93px] h-full'>Увійти</button>
         </Link>
-        <button className='btn filled w-[93px]'>Створити</button>
+        <Link to={'/quiz/create'}>
+          <button className='btn filled w-[93px] h-full'>Створити</button>
+        </Link>
       </section>
     </header>
   )

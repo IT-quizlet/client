@@ -10,6 +10,11 @@ import {SignUp} from "./core/auth/components/sign-up/SignUp.tsx";
 import {ResetPassword} from "./core/auth/components/reset-password/ResetPassword.tsx";
 import {ForgotPassword} from "./core/auth/components/forgot-password/ForgotPassword.tsx";
 import {Main} from "./pages/main/Main.tsx";
+import {Home} from "./pages/main/components/Home.tsx";
+import {QuizList} from "./pages/quiz/quiz-list/QuizList.tsx";
+import {QuizItem} from "./pages/quiz/quiz-item/QuizItem.tsx";
+import {AccountSettings} from "./pages/account-settings/AccountSettings.tsx";
+import {QuizCreate} from "./pages/quiz/quiz-create/QuizCreate.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +25,39 @@ const router = createBrowserRouter([
         element: <Navigate to="/home" replace />,
       },
       {
-        path: 'home',
+        path: '',
         element: <Main />,
+        children: [
+          {
+            path: 'home',
+            element: <Home />,
+          },
+          {
+            path: 'quiz',
+            children: [
+              {
+                index: true,
+                element: <Navigate to="/quiz/list" replace />,
+              },
+              {
+                path: 'list',
+                element: <QuizList />,
+              },
+              {
+                path: 'item',
+                element: <QuizItem />,
+              },
+              {
+                path: 'create',
+                element: <QuizCreate />,
+              }
+            ]
+          },
+          {
+            path: 'account-settings',
+            element: <AccountSettings />,
+          },
+        ]
       },
       {
         path: 'auth',
