@@ -22,11 +22,10 @@ export class QuizService {
     return this.httpClient.get<QuizPayload>(`${this.BASE_URL}/${id}`);
   }
 
-  getALlQuizzes(params: QuizFilterPayload) {
-    return this.httpClient.get<QuizPayload[]>(
-      this.BASE_URL,
-      { params: new HttpParams({ fromObject: params as Record<string, LevelEnum | string[]> }) }
-    );
+  getALlQuizzes(quizFilters?: QuizFilterPayload) {
+    const params = quizFilters ? new HttpParams({ fromObject: quizFilters as Record<string, LevelEnum | string[]> }) : {};
+
+    return this.httpClient.get<QuizPayload[]>(this.BASE_URL, { params });
   }
 
   deleteQuizById(id: string) {

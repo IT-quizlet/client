@@ -10,7 +10,7 @@ import {RouterModule} from "@angular/router";
   ],
   standalone: true,
   template: `
-    <div class="bg-orange-50">
+    <div class="bg-slate-600">
       <app-header/>
       <main class="min-h-[100vh] w-full pt-[100px]">
         <router-outlet/>

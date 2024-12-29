@@ -8,7 +8,7 @@ import {AuthService} from "../../services/auth.service";
   standalone: true,
   template: `
     <header
-      class='py-4 px-[6vw] flex justify-between content-center w-full bg-white border-b border-slate-800 fixed z-10'
+      class='py-4 px-[6vw] flex justify-between content-center w-full bg-slate-400 border-b border-slate-800 fixed z-10'
     >
       <section class='flex gap-10 content-center leading-8'>
         <h1 class='font-bold text-[20px]'>IT Quizlet</h1>

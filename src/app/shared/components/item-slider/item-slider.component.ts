@@ -30,19 +30,19 @@ export class ItemSliderComponent {
   @Input() total = 0;
   @Input() current = 0;
 
-  @Output() itemSelected = new EventEmitter<number>();
+  @Output() pageSelected = new EventEmitter<number>();
 
   onNext() {
     if (this.current < this.total) {
       this.current++;
-      this.itemSelected.emit(this.current);
+      this.pageSelected.emit(this.current);
     }
   }
 
   onPrev() {
     if (this.current > 1) {
       this.current--;
-      this.itemSelected.emit(this.current);
+      this.pageSelected.emit(this.current);
     }
   }
 }
