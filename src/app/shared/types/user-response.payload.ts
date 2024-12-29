@@ -1,8 +1,8 @@
 import {UserPayload} from "./user.payload";
-import {QuizInterface} from "./quiz.interface";
+import {QuizPayload} from "./quiz.payload";
 
 export interface UserResponsePayload {
   id: string;
   user: UserPayload;
-  quiz: QuizInterface
+  quiz: QuizPayload
 }

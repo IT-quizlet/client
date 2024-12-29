@@ -33,12 +33,16 @@ export class ItemSliderComponent {
   @Output() itemSelected = new EventEmitter<number>();
 
   onNext() {
-    this.current++;
-    this.itemSelected.emit(this.current);
+    if (this.current < this.total) {
+      this.current++;
+      this.itemSelected.emit(this.current);
+    }
   }
 
   onPrev() {
-    this.current--;
-    this.itemSelected.emit(this.current);
+    if (this.current > 1) {
+      this.current--;
+      this.itemSelected.emit(this.current);
+    }
   }
 }
