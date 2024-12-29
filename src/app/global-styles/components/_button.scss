@@ -1,0 +1,15 @@
+.btn {
+  @apply cursor-pointer rounded-md;
+
+  &.outlined {
+    @apply text-black border border-black;
+  }
+
+  &.filled {
+    @apply bg-black text-white;
+  }
+
+  &:hover {
+    @apply opacity-75 shadow-xl;
+  }
+}
