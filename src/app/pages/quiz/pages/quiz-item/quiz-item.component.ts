@@ -71,9 +71,9 @@ interface UserAnswer extends QuestionPayload {
           </div>
         </ng-container>
         
-        <ng-container *ngIf="resultAnswers">
-          You have answered correctly on {{ getCorrectAnswersAmount() }} questions
-        </ng-container>
+        <span class="text-2xl text-slate-800" *ngIf="resultAnswers">
+          You have answered correctly to {{ getCorrectAnswersAmount() }} questions
+        </span>
         
         <ng-container *ngIf="!(currentQuestion && currentUserAnswer)">
           <h1 class="text-4xl font-bolder">No questions</h1>
@@ -84,6 +84,7 @@ interface UserAnswer extends QuestionPayload {
         (pageSelected)="onQuestionSelect($event)"
         [current]="currentQuestionPage"
         [total]="questions.length"
+        *ngIf="!resultAnswers"
       />
     </div>
   `,

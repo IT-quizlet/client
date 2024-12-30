@@ -1,6 +1,6 @@
 import {inject, Injectable, signal} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, of, switchMap, tap} from "rxjs";
+import {catchError, of, switchMap, tap} from "rxjs";
 import {UserPayload} from "../../shared/types/user.payload";
 import {environment} from "../../../environments/environment";
 import {UserLoginPayload} from "../../shared/types/user-login.payload";
