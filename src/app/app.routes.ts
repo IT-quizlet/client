@@ -27,7 +27,7 @@ export const routes: Routes = [
             loadComponent: () => import('./pages/quiz/pages/quiz-list/quiz-list.component').then(m => m.QuizListComponent),
           },
           {
-            path: 'item',
+            path: 'item/:id',
             loadComponent: () => import('./pages/quiz/pages/quiz-item/quiz-item.component').then(m => m.QuizItemComponent),
           },
           {

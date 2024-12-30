@@ -9,6 +9,10 @@
     @apply bg-black text-white;
   }
 
+  &.disabled {
+    @apply cursor-not-allowed !opacity-50 !shadow-none;
+  }
+
   &:hover {
     @apply opacity-75 shadow-xl;
   }

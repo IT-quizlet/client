@@ -27,13 +27,14 @@ import {QuizPayload} from "../../../../shared/types/quiz.payload";
       <div class="flex flex-wrap gap-12 p-6">
         <div
           class='card flex flex-col gap-6 flex-auto w-[40%] items-start cursor-pointer hover:shadow-xl'
-          [routerLink]="'/quiz/' + quiz.id"
+          [routerLink]="'/quiz/item/' + quiz.id"
           *ngFor="let quiz of quizzes | paginate: currentPage : itemsPerPage" 
         >
           <h1>{{ quiz.title }}</h1>
-
+          
+          <span class="text-sm">{{ quiz.description }}</span>
+          
           <p-tag severity="secondary" [rounded]="true" [value]="quiz.level"/>
-
         </div>
       </div>
 
@@ -42,14 +43,14 @@ import {QuizPayload} from "../../../../shared/types/quiz.payload";
         [current]="currentPage" 
         [total]="totalPages"
       />
-    </div>;
+    </div>
   `
 })
 export class QuizListComponent implements OnInit {
   currentPage = 1;
   quizzes: QuizPayload[] = [];
 
-  readonly itemsPerPage = 6;
+  readonly itemsPerPage = 4;
   readonly quizService = inject(QuizService);
 
   get totalPages() {

@@ -4,9 +4,10 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {QuizPayload} from "../types/quiz.payload";
 import {QuizFilterPayload} from "../types/quiz-filter.payload";
 import {LevelEnum} from "../enums/level.enum";
-import {QuizUpdatePayload} from "../types/quiz-update.payload";
 import {QuestionPayload} from "../types/question.payload";
 import {QuizCreatePayload} from "../types/quiz-create.payload";
+import {UserResponsePayload} from "../types/user-response.payload";
+import {QuestionAnswerPayload} from "../types/question-answer.payload";
 
 @Injectable({
   providedIn: 'root'
@@ -14,29 +15,52 @@ import {QuizCreatePayload} from "../types/quiz-create.payload";
 export class QuizService {
   private readonly httpClient = inject(HttpClient);
 
-  get BASE_URL() {
+  get QUIZ_BASE_URL() {
     return `${environment.API_BASE}/quizzes`
   }
 
+  get RESPONSE_BASE_URL() {
+    return `${environment.API_BASE}/responses`
+  }
+
   getQuizById(id: string) {
-    return this.httpClient.get<QuizPayload>(`${this.BASE_URL}/${id}`);
+    return this.httpClient.get<QuizPayload>(`${this.QUIZ_BASE_URL}/${id}`);
   }
 
   getALlQuizzes(quizFilters?: QuizFilterPayload) {
     const params = quizFilters ? new HttpParams({ fromObject: quizFilters as Record<string, LevelEnum | string[]> }) : {};
 
-    return this.httpClient.get<QuizPayload[]>(this.BASE_URL, { params });
+    return this.httpClient.get<QuizPayload[]>(this.QUIZ_BASE_URL, { params });
   }
 
   deleteQuizById(id: string) {
-    return this.httpClient.delete<void>(`${this.BASE_URL}/${id}`);
+    return this.httpClient.delete<void>(`${this.QUIZ_BASE_URL}/${id}`);
   }
 
   getQuizQuestions(id: string) {
-    return this.httpClient.get<QuestionPayload[]>(`${this.BASE_URL}/${id}/questions`);
+    return this.httpClient.get<QuestionPayload[]>(`${this.QUIZ_BASE_URL}/${id}/questions`);
   }
 
   createQuiz(quiz: QuizCreatePayload) {
-    return this.httpClient.post<QuizPayload>(this.BASE_URL, quiz);
+    return this.httpClient.post<QuizPayload>(this.QUIZ_BASE_URL, quiz);
+  }
+
+  getQuizResponses(id: string) {
+    return this.httpClient.get<UserResponsePayload[]>(`${this.RESPONSE_BASE_URL}/by-quiz/${id}`);
+  }
+
+  createQuizResponse(quizId: string) {
+    return this.httpClient.post<UserResponsePayload>(
+      `${this.RESPONSE_BASE_URL}`,
+      { params: new HttpParams({ fromObject: { quizId } }) }
+    );
+  }
+
+  addAnswerToResponse(responseId: string, questionId: string, answer: string) {
+    return this.httpClient.post<QuestionAnswerPayload>(
+      `${this.RESPONSE_BASE_URL}/${responseId}/answer`,
+      { answer },
+      { params: new HttpParams({ fromObject: { questionId } }) }
+    );
   }
 }

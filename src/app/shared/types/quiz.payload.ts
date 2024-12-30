@@ -1,7 +1,9 @@
+import {LevelEnum} from "../enums/level.enum";
+
 export interface QuizPayload {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  level: string;
+  level: LevelEnum;
   categories: string[];
 }

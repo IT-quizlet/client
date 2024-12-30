@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'paginate'
 })
 export class PaginatePipe implements PipeTransform {
-  transform<T>(data: T[], page = 1, itemsPerPage = 10): T[] {
+  transform<T>(data: T[], page = 1, itemsPerPage = 1): T[] {
     if (!data || data.length === 0) {
       return [];
     }
