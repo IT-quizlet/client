@@ -3,12 +3,14 @@ import {Router, RouterModule} from "@angular/router";
 import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../../../services/auth.service";
 import {filter, first, tap} from "rxjs";
+import {InputText, InputTextModule} from "primeng/inputtext";
 
 @Component({
   selector: 'app-login',
   imports: [
     RouterModule,
     ReactiveFormsModule,
+    InputTextModule,
   ],
   standalone: true,
   template: `
@@ -16,14 +18,16 @@ import {filter, first, tap} from "rxjs";
       <h1 class='text-[35px] tracking-[8%]'>Sign-in</h1>
       <div class="w-full flex flex-col items-center justify-center gap-8">
         <input
-          class='w-full border-[#9D9D9D] border-b-[1px] focus:outline-none focus:ring-0'
+          pInputText
+          class='w-full'
           placeholder='Email'
           type='email'
           [formControl]="loginFrom.controls.username"
         />
 
         <input
-          class='w-full border-[#9D9D9D] border-b-[1px] focus:outline-none focus:ring-0'
+          pInputText
+          class='w-full'
           placeholder='Password'
           type='password'
           [formControl]="loginFrom.controls.password"
@@ -38,7 +42,7 @@ import {filter, first, tap} from "rxjs";
         </button>
         <p class='tracking-[8%] text-[12px] font-[Inter]'>
           Don’t have an account?
-          <span class='text-[#5B86E5] cursor-pointer' routerLink="/auth/signup">Signup Here</span>
+          <span class='text-slate-800 cursor-pointer' routerLink="/auth/signup">Signup Here</span>
         </p>
       </div>
     </div>

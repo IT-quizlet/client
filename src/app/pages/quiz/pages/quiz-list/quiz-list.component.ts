@@ -2,12 +2,14 @@ import {Component, inject, OnInit} from '@angular/core';
 import {ItemSliderComponent} from "../../../../shared/components/item-slider/item-slider.component";
 import {Tag, TagModule} from "primeng/tag";
 import {AvatarModule} from "primeng/avatar";
-import {RouterModule} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {QuizService} from "../../../../shared/services/quiz.service";
 import {CommonModule} from "@angular/common";
 import {PaginatePipe} from "../../../../shared/pipes/paginate.pipe";
 import {first, tap} from "rxjs";
 import {QuizPayload} from "../../../../shared/types/quiz.payload";
+import {toObservable} from "@angular/core/rxjs-interop";
+import {AuthService} from "../../../../core/services/auth.service";
 
 @Component({
   selector: 'app-quiz-list',

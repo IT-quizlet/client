@@ -8,6 +8,7 @@ import {QuestionPayload} from "../types/question.payload";
 import {QuizCreatePayload} from "../types/quiz-create.payload";
 import {UserResponsePayload} from "../types/user-response.payload";
 import {QuestionAnswerPayload} from "../types/question-answer.payload";
+import {QuestionCreatePayload} from "../types/question-create.payload";
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,10 @@ export class QuizService {
     return this.httpClient.get<QuestionPayload[]>(`${this.QUIZ_BASE_URL}/${id}/questions`);
   }
 
+  addQuestionToQuiz(quizId: string, questions: QuestionCreatePayload) {
+    return this.httpClient.post<QuestionPayload>(`${this.QUIZ_BASE_URL}/${quizId}/questions`, questions);
+  }
+
   createQuiz(quiz: QuizCreatePayload) {
     return this.httpClient.post<QuizPayload>(this.QUIZ_BASE_URL, quiz);
   }
@@ -50,17 +55,13 @@ export class QuizService {
   }
 
   createQuizResponse(quizId: string) {
-    return this.httpClient.post<UserResponsePayload>(
-      `${this.RESPONSE_BASE_URL}`,
-      { params: new HttpParams({ fromObject: { quizId } }) }
-    );
+    return this.httpClient.post<UserResponsePayload>(`${this.RESPONSE_BASE_URL}?quizId=${quizId}`, {});
   }
 
   addAnswerToResponse(responseId: string, questionId: string, answer: string) {
     return this.httpClient.post<QuestionAnswerPayload>(
-      `${this.RESPONSE_BASE_URL}/${responseId}/answer`,
-      { answer },
-      { params: new HttpParams({ fromObject: { questionId } }) }
+      `${this.RESPONSE_BASE_URL}/${responseId}/answers?questionId=${questionId}`,
+      { answer }
     );
   }
 }

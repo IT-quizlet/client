@@ -10,6 +10,8 @@ import {CommonModule} from "@angular/common";
 import {PaginatePipe} from "../../../../shared/pipes/paginate.pipe";
 import {FormControl, NonNullableFormBuilder, Validators} from "@angular/forms";
 import {QuestionAnswerPayload} from "../../../../shared/types/question-answer.payload";
+import {toObservable} from "@angular/core/rxjs-interop";
+import {AuthService} from "../../../../core/services/auth.service";
 
 interface UserAnswer extends QuestionPayload {
   answer: FormControl<string>;
@@ -152,12 +154,12 @@ export class QuizItemComponent implements OnInit {
         .pipe(
           switchMap(({ id }) =>
             forkJoin(
-              answers.map(({ questionId, answer }) => this.quizService.addAnswerToResponse(id, questionId, answer))
+              ...answers.map(({ questionId, answer }) => this.quizService.addAnswerToResponse(id, questionId, answer))
             )
           ),
           tap((resultAnswers) => this.resultAnswers = resultAnswers),
         )
-        .subscribe();
+        .subscribe(console.log);
     }
   }
 

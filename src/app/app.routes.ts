@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import {AuthGuard} from "./core/guards/auth.guard";
 
 export const routes: Routes = [
   {
@@ -25,20 +26,24 @@ export const routes: Routes = [
           {
             path: 'list',
             loadComponent: () => import('./pages/quiz/pages/quiz-list/quiz-list.component').then(m => m.QuizListComponent),
+            canActivate: [AuthGuard]
           },
           {
             path: 'item/:id',
             loadComponent: () => import('./pages/quiz/pages/quiz-item/quiz-item.component').then(m => m.QuizItemComponent),
+            canActivate: [AuthGuard]
           },
           {
             path: 'create',
             loadComponent: () => import('./pages/quiz/pages/quiz-create/quiz-create.component').then(m => m.QuizCreateComponent),
+            canActivate: [AuthGuard]
           }
         ]
       },
       {
         path: 'account-settings',
         loadComponent: () => import('./pages/account-settings/account-settings.component').then(m => m.AccountSettingsComponent),
+        canActivate: [AuthGuard]
       },
     ]
   },

@@ -3,6 +3,7 @@ import {Router, RouterModule} from "@angular/router";
 import {AuthService} from "../../../../services/auth.service";
 import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {filter, first, tap} from "rxjs";
+import {InputText, InputTextModule} from "primeng/inputtext";
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import {filter, first, tap} from "rxjs";
   imports: [
     RouterModule,
     ReactiveFormsModule,
+    InputTextModule,
   ],
   template: `
     <div class='max-w-[400px] w-full flex flex-col items-center justify-center gap-[60px] tracking-widest'>
@@ -29,6 +31,7 @@ import {filter, first, tap} from "rxjs";
       </div>
       <div class="w-full flex flex-col items-center justify-center gap-8">
         <input
+          pInputText
           class='w-full border-[#9D9D9D] border-b-[1px] focus:outline-none focus:ring-0'
           placeholder='Username'
           type='text'
@@ -36,6 +39,7 @@ import {filter, first, tap} from "rxjs";
         />
 
         <input
+          pInputText
           class='w-full border-[#9D9D9D] border-b-[1px] focus:outline-none focus:ring-0'
           placeholder='Email'
           type='email'
@@ -43,6 +47,7 @@ import {filter, first, tap} from "rxjs";
         />
 
         <input
+          pInputText
           class='w-full border-[#9D9D9D] border-b-[1px] focus:outline-none focus:ring-0'
           placeholder='Password'
           type='password'
@@ -50,6 +55,7 @@ import {filter, first, tap} from "rxjs";
         />
 
         <input
+          pInputText
           class='w-full border-[#9D9D9D] border-b-[1px] focus:outline-none focus:ring-0'
           placeholder='Avatar URL'
           type='text'
@@ -62,9 +68,10 @@ import {filter, first, tap} from "rxjs";
           class='w-full btn filled !bg-[#5B86E5] py-2'
           (click)="onRegister()"
         >Create account</button>
+        
         <p class='tracking-[8%] text-[12px] font-[Inter]'>
           Already have an account? 
-          <span class='text-[#5B86E5] cursor-pointer' routerLink="/auth/login">Login</span>
+          <span class='text-slate-800 cursor-pointer' routerLink="/auth/login">Login</span>
         </p>
       </div>
     </div>

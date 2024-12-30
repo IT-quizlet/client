@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {UserLoginPayload} from "../../shared/types/user-login.payload";
 import {AuthResponsePayload} from "../../shared/types/auth-response.payload";
 import {UserRegisterPayload} from "../../shared/types/user-register.payload";
+import {ToastService} from "../../shared/services/toast.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
 
   private readonly tokenKey = 'auth_token';
   private readonly http = inject(HttpClient);
+  private readonly toastService = inject(ToastService);
 
   constructor() {
     const token = this.getToken();
@@ -45,6 +47,7 @@ export class AuthService {
       tap(({ token }) => this.setToken(token)),
       switchMap(() => this.getMe()),
       catchError(() => {
+        this.toastService.show('error', 'Error', 'Something went wrong')
         return of(null);
       }),
     );
@@ -56,6 +59,7 @@ export class AuthService {
         tap(({ token }) => this.setToken(token)),
         switchMap(() => this.getMe()),
         catchError(() => {
+          this.toastService.show('error', 'Error', 'Something went wrong')
           return of(null);
         }),
       );

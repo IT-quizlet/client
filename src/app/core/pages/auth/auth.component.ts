@@ -8,7 +8,7 @@ import {RouterModule} from "@angular/router";
   ],
   standalone: true,
   template: `
-    <div class="bg-indigo-200 w-full min-h-[100vh] flex font-[Akshar]">
+    <div class="bg-slate-300 w-full min-h-[100vh] flex font-[Akshar]">
       <section class='hidden w-[27%] min-h-full xl:flex flex-col justify-center content-center'>
         <h1 class='font-semibold text-[60px] px-[82px] flex flex-col justify-center'>
           <span class='text-white'>Prepare, Practice &</span>
@@ -17,7 +17,7 @@ import {RouterModule} from "@angular/router";
         <img src="logo-login.png" alt='some logo'/>
       </section>
 
-      <section class='rounded-none w-full min-h-full bg-white flex flex-col justify-center items-center xl:rounded-s-[50px]'>
+      <section class='rounded-none w-full min-h-full bg-slate-400 flex flex-col justify-center items-center xl:rounded-s-[50px]'>
         <router-outlet/>
       </section>
     </div>
